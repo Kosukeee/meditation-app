@@ -5,7 +5,7 @@ const app = () => {
   const sounds = document.querySelectorAll('.soundList-item');
   const outline = document.querySelector('.player-timer-moving-circle circle');
   const outlineLength = outline.getTotalLength();
-  const timeDisplay = document.querySelector('.time-display');
+  const timeDisplay = document.querySelector('.timeDisplay');
   let currentTime = song.currentTime;
   let currentDuration = 120;
   let leftDuration = currentDuration - currentTime;
