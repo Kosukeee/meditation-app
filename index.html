@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,57 +10,64 @@
   <body>
     <div>
       <div class="player">
-        <div class='player-timer'>
-          <!-- Circle svg -->
-          <svg
-            class='player-timer-circle'
-            width="164"
-            height="164"
-            viewBox="0 0 164 164"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M82 161C125.63 161 161 125.63 161 82C161 38.3695 125.63 3 82 3C38.3695 3 3 38.3695 3 82C3 125.63 38.3695 161 82 161ZM82 164C127.287 164 164 127.287 164 82C164 36.7127 127.287 0 82 0C36.7127 0 0 36.7127 0 82C0 127.287 36.7127 164 82 164Z"
-              fill="white"
-            />
+        <audio class="song" src="sounds/ocean_sunset.mp3" loop></audio>
+        <div class="player-timer">
+          <!-- Track outline -->
+          <svg class="player-timer-circle player-timer-track-circle" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="110" cy="110" r="108.5" stroke="white" stroke-width="3"/>
           </svg>
-          <!-- Triangle svg -->
-          <svg class='player-timer-btn' width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.82532 6.24994L28.5753 17.0753L9.82532 27.9006L9.82532 6.24994Z" fill="white"/>
+          <!-- Moving outline -->
+          <svg class="player-timer-circle player-timer-moving-circle" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="110" cy="110" r="108.5" stroke="#B7B7B7" stroke-width="3"/>
           </svg>
+          <!-- Play svg -->
+          <img src="svg/play.svg" alt="" class="player-timer-btn" />
+          <h3 class='time-display'>0:00</h3>
         </div>
       </div>
       <div class="selection">
         <span class="selection-bar"></span>
         <div class="title">
-          <p class="title-headline">穏やかな森の雨</p>
+          <p class="title-headline">南国のせせらぎ ~フィジー~</p>
           <p class="title-description">
-            雨の音, Sound Collabo, Gentle Rains in Highlights
+            海辺の音, Sound of Sea
           </p>
         </div>
-        <div class='soundList'>
-          <div class="soundList-item">
-            <img src="img/shooting_star.jpg" alt="" class="soundList-image" />
+        <div class="soundList">
+          <div
+            class="soundList-item"
+            data-sound="sounds/morning_forest.mp3"
+            data-image="img/road.jpg"
+            data-time="120"
+          >
+            <img src="img/road.jpg" alt="" class="soundList-image" />
             <div class="soundList-text">
-              <span class="soundList-title">ひたすら続く強い雨 ~尾瀬ヶ原~</span>
-              <span class="soundList-description">Gentle Rains in Highlights</span>
+              <span class="soundList-title">爽やかな鳥の声 ~山中湖~</span>
+              <span class="soundList-description">Morning birds, Lake Yamanaka</span>
             </div>
           </div>
-          <div class="soundList-item">
-            <img src="img/shooting_star.jpg" alt="" class="soundList-image" />
+          <div
+            class="soundList-item"
+            data-sound="sounds/ocean_sunset.mp3"
+            data-image="img/ocean.jpg"
+            data-time="60"
+          >
+            <img src="img/ocean.jpg" alt="" class="soundList-image" />
             <div class="soundList-text">
-              <span class="soundList-title">東京の雨 ~奥武蔵~</span>
-              <span class="soundList-description">Gentle Rains in Highlights</span>
+              <span class="soundList-title">南国のせせらぎ ~フィジー~</span>
+              <span class="soundList-description">海辺の音, Sound of Sea</span>
             </div>
           </div>
-          <div class="soundList-item">
-            <img src="img/shooting_star.jpg" alt="" class="soundList-image" />
+          <div
+            class="soundList-item"
+            data-sound="sounds/night_forest.mp3"
+            data-image="img/night-forest.jpg"
+            data-time="180"
+          >
+            <img src="img/night-forest.jpg" alt="" class="soundList-image" />
             <div class="soundList-text">
-              <span class="soundList-title">スコール ~フィジー タビアンガ村~</span>
-              <span class="soundList-description">Gentle Rains in Highlights</span>
+              <span class="soundList-title">夜の森 ~群馬県沼田~</span>
+              <span class="soundList-description">Sounds of insects, Star in the forest</span>
             </div>
           </div>
         </div>

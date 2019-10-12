@@ -18,16 +18,28 @@ body {
 
 .player-timer-circle {
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(-90deg);
+  height: 220px;
+  width: 220px;
 }
 
 .player-timer-btn {
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-54%, -50%);
+}
+
+.time-display {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-weight: 100;
+  font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Meiryo", "verdana", sans-serif;
 }
 
 .selection {
@@ -87,17 +99,17 @@ body {
 .soundList-item {
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 2rem;
 }
 
 .soundList-title {
   font-size: .8rem;
   font-weight: bold;
-  display: inline-block;
+  display: block;
 }
 
 .soundList-description {
   font-size: 0.7rem;
-  display: inline-block;
+  display: block;
   color: #c7c7c7;
 }
