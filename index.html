@@ -8,71 +8,69 @@
     <title>瞑想アプリ</title>
   </head>
   <body>
-    <div>
-      <div class="player">
-        <audio class="song" src="sounds/ocean_sunset.mp3" loop></audio>
-        <div class="player-timer">
-          <!-- Track outline -->
-          <svg class="player-timer-circle player-timer-track-circle" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="110" cy="110" r="108.5" stroke="white" stroke-width="3"/>
-          </svg>
-          <!-- Moving outline -->
-          <svg class="player-timer-circle player-timer-moving-circle" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="110" cy="110" r="108.5" stroke="#B7B7B7" stroke-width="3"/>
-          </svg>
-          <!-- Play svg -->
-          <img src="svg/play.svg" alt="" class="player-timer-btn" />
-          <h3 class='timeDisplay'>0:00</h3>
-        </div>
+    <section class="player">
+      <audio class="song" src="sounds/ocean_sunset.mp3" loop></audio>
+      <div class="player-timer">
+        <!-- Track outline -->
+        <svg class="player-timer-circle player-timer-track-circle" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="110" cy="110" r="108.5" stroke="white" stroke-width="3"/>
+        </svg>
+        <!-- Moving outline -->
+        <svg class="player-timer-circle player-timer-moving-circle" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="110" cy="110" r="108.5" stroke="#B7B7B7" stroke-width="3"/>
+        </svg>
+        <!-- Play svg -->
+        <img src="svg/play.svg" alt="" class="player-timer-btn" />
+        <h3 class='timeDisplay'>0:00</h3>
       </div>
-      <div class="selection">
-        <span class="selection-bar"></span>
-        <div class="title">
-          <p class="title-headline">南国のせせらぎ ~フィジー~</p>
-          <p class="title-description">
-            海辺の音, Sound of Sea
-          </p>
+    </section>
+    <section class="selection">
+      <span class="selection-bar"></span>
+      <div class="title">
+        <p class="title-headline">南国のせせらぎ ~フィジー~</p>
+        <p class="title-description">
+          海辺の音, Sound of Sea
+        </p>
+      </div>
+      <div class="soundList">
+        <div
+          class="soundList-item"
+          data-sound="sounds/morning_forest.mp3"
+          data-image="img/road.jpg"
+          data-time="120"
+        >
+          <img src="img/road.jpg" alt="" class="soundList-image" />
+          <div class="soundList-text">
+            <span class="soundList-title">爽やかな鳥の声 ~山中湖~</span>
+            <span class="soundList-description">Morning birds, Lake Yamanaka</span>
+          </div>
         </div>
-        <div class="soundList">
-          <div
-            class="soundList-item"
-            data-sound="sounds/morning_forest.mp3"
-            data-image="img/road.jpg"
-            data-time="120"
-          >
-            <img src="img/road.jpg" alt="" class="soundList-image" />
-            <div class="soundList-text">
-              <span class="soundList-title">爽やかな鳥の声 ~山中湖~</span>
-              <span class="soundList-description">Morning birds, Lake Yamanaka</span>
-            </div>
+        <div
+          class="soundList-item"
+          data-sound="sounds/ocean_sunset.mp3"
+          data-image="img/ocean.jpg"
+          data-time="60"
+        >
+          <img src="img/ocean.jpg" alt="" class="soundList-image" />
+          <div class="soundList-text">
+            <span class="soundList-title">南国のせせらぎ ~フィジー~</span>
+            <span class="soundList-description">海辺の音, Sound of Sea</span>
           </div>
-          <div
-            class="soundList-item"
-            data-sound="sounds/ocean_sunset.mp3"
-            data-image="img/ocean.jpg"
-            data-time="60"
-          >
-            <img src="img/ocean.jpg" alt="" class="soundList-image" />
-            <div class="soundList-text">
-              <span class="soundList-title">南国のせせらぎ ~フィジー~</span>
-              <span class="soundList-description">海辺の音, Sound of Sea</span>
-            </div>
-          </div>
-          <div
-            class="soundList-item"
-            data-sound="sounds/night_forest.mp3"
-            data-image="img/night-forest.jpg"
-            data-time="180"
-          >
-            <img src="img/night-forest.jpg" alt="" class="soundList-image" />
-            <div class="soundList-text">
-              <span class="soundList-title">夜の森 ~群馬県沼田~</span>
-              <span class="soundList-description">Sounds of insects, Star in the forest</span>
-            </div>
+        </div>
+        <div
+          class="soundList-item"
+          data-sound="sounds/night_forest.mp3"
+          data-image="img/night-forest.jpg"
+          data-time="180"
+        >
+          <img src="img/night-forest.jpg" alt="" class="soundList-image" />
+          <div class="soundList-text">
+            <span class="soundList-title">夜の森 ~群馬県沼田~</span>
+            <span class="soundList-description">Sounds of insects, Star in the forest</span>
           </div>
         </div>
       </div>
-    </div>
+    </section>
     <script src="./app.js"></script>
   </body>
 </html>

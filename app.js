@@ -13,28 +13,23 @@ const app = () => {
   let seconds = Math.floor(leftDuration % 60);
 
   window.addEventListener('DOMContentLoaded', () => {
-    mapClickEventToSoundBtn();
-    setAnimateCircle();
-    mapCheckPlayingEvent();
-    updateTimerText(minutes, seconds);
+    setDefaultPlayer();
   });
+
+  const setDefaultPlayer = () => {
+    setCircleStroke();
+    updatePlayerByTimeUpdate();
+    setTimerText(minutes, seconds);
+    mapCheckPlayingEvent();
+    mapClickEventToSoundBtn();
+  };
 
   const mapCheckPlayingEvent = () => {
     playBtn.addEventListener('click', () => {
       checkPlaying(song);
+      checkSongEnding();
     });
   }
-
-  const mapClickEventToSoundBtn = () => {
-    sounds.forEach(sound => {
-      sound.addEventListener('click', function() {
-        const imageUrl = this.getAttribute('data-image');
-
-        song.src = this.getAttribute('data-sound');
-        player.style.backgroundImage = `url(${imageUrl})`;
-      });
-    });
-  };
 
   const checkPlaying = () => {
     if (song.paused) {
@@ -46,20 +41,6 @@ const app = () => {
     }
   };
 
-  const updateTimerText = (minutes, seconds) => {
-    const renderSeconds = () => {
-      return seconds > 10 ? seconds : `0${seconds}`;
-    }
-
-    timeDisplay.textContent = `${minutes}:${renderSeconds()}`;
-  };
-
-  const animateCircle = () => {
-    let progress = outlineLength - (currentTime / currentDuration) * outlineLength;
-
-    outline.style.strokeDashoffset = progress;
-  };
-
   const checkSongEnding = () => {
     if (currentTime > currentDuration) {
       song.pause();
@@ -68,23 +49,32 @@ const app = () => {
     }
   };
 
-  const setAnimateCircle = () => {
-    outline.style.strokeDasharray = outlineLength;
-    outline.style.strokeDashoffset = outlineLength;
+  const mapClickEventToSoundBtn = () => {
+    sounds.forEach(sound => {
+      sound.addEventListener('click', function() {
+        const imageUrl = this.getAttribute('data-image');
+        const title = this.querySelector('.soundList-title').innerText;
+        const description = this.querySelector('.soundList-description').innerText;
+        const songData = this.getAttribute('data-sound');;
+        currentDuration = parseInt(this.getAttribute('data-time'));
+        currentTime = 0;
+        minutes = Math.floor(currentDuration / 60);
+        seconds = Math.floor(currentDuration % 60);
 
-    song.addEventListener('timeupdate', () => {
-      currentTime = song.currentTime;
-      leftDuration = currentDuration - currentTime;
-      minutes = Math.floor(leftDuration / 60);
-      seconds = Math.floor(leftDuration % 60);
-
-      animateCircle();
-      updateTimerText(minutes, seconds);
-      checkSongEnding();
+        setPlayerSong(songData, imageUrl);
+        setPlayerText(title, description, currentDuration);
+        setTimerText(minutes, seconds);
+      });
     });
   };
 
-  const updatePlayerText = (title, description) => {
+  const setPlayerSong = (songData, imageUrl) => {
+    song.src = songData;
+    player.style.backgroundImage = `url(${imageUrl})`;
+    playBtn.src = 'svg/play.svg';
+  }
+
+  const setPlayerText = (title, description) => {
     const playerTitle = document.querySelector('.title-headline');
     const playerDescription = document.querySelector('.title-description');
 
@@ -92,19 +82,50 @@ const app = () => {
     playerDescription.innerText = description;
   };
 
-  sounds.forEach(option => {
-    option.addEventListener('click', function() {
-      currentDuration = parseInt(this.getAttribute('data-time'));
-      minutes = Math.floor(currentDuration / 60);
-      seconds = Math.floor(currentDuration % 60);
-      playBtn.src = 'svg/play.svg';
-      const title = this.querySelector('.soundList-title').innerText;
-      const description = this.querySelector('.soundList-description').innerText;
+  const updateTimerText = () => {
+    currentTime = song.currentTime;
+    leftDuration = currentDuration - currentTime;
+    minutes = Math.floor(leftDuration / 60);
+    seconds = Math.floor(leftDuration % 60);
 
-      updateTimerText(minutes, seconds);
-      updatePlayerText(title, description);
+    setTimerText(minutes, seconds);
+  };
+
+  const updateCircle = () => {
+    const progress = outlineLength - (currentTime / currentDuration) * outlineLength;
+
+    outline.style.strokeDashoffset = progress;
+  };
+
+  const setCircleStroke = () => {
+    outline.style.strokeDasharray = outlineLength;
+    outline.style.strokeDashoffset = outlineLength;
+  };
+
+  const updatePlayerByTimeUpdate = () => {
+    song.addEventListener('timeupdate', () => {
+      const currentSrc = song.getAttribute('src');
+      let lastSrc;
+
+      if (currentSrc === lastSrc || lastSrc === undefined) {
+        lastSrc = currentSrc;
+
+        updateCircle();
+        updateTimerText();
+      } else {
+        setCircleStroke();
+        lastSrc = undefined;
+      }
     });
-  });
+  }
+
+  const setTimerText = (minutes, seconds) => {
+    const renderSeconds = () => {
+      return seconds > 9 ? seconds : `0${seconds}`;
+    }
+
+    timeDisplay.textContent = `${minutes}:${renderSeconds()}`;
+  }
 }
 
 app();
